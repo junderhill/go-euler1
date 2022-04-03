@@ -4,6 +4,12 @@ import (
 	"testing"
 )
 
+func BenchmarkSumOfNaturals(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		SumNaturalBelow(1000)
+	}
+}
+
 func TestSumNaturalBelow(t *testing.T) {
 	result := SumNaturalBelow(10)
 	if result != 23 {
@@ -11,10 +17,12 @@ func TestSumNaturalBelow(t *testing.T) {
 	}
 }
 
-var testCases = []struct {
+type multipleOf3or5TestCase struct {
 	in  int
 	out bool
-}{
+}
+
+var testCases = []multipleOf3or5TestCase{
 	{3, true},
 	{5, true},
 	{4, false},
