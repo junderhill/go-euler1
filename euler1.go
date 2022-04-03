@@ -1,8 +1,13 @@
 package euler1
 
 func SumNaturalBelow(n int) int {
-
-	return 0
+	result := 0
+	for i := 1; i < n; i++ {
+		if MultipleOf3Or5(i) {
+			result += i
+		}
+	}
+	return result
 }
 
 func MultipleOf3Or5(n int) bool {
